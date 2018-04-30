@@ -1,6 +1,7 @@
 version: '2'
 services:
   web:
+    image: fluvip/chat_messenger:v1
     build: .
     command: mix phx.server
     volumes:

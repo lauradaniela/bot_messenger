@@ -40,6 +40,10 @@ defmodule Messenger.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
+      {:httpotion, "~> 3.0.2"},
+      {:facebook_messenger, "~> 0.4.0"},
+      {:phoenix_facebook_messenger, "~> 0.4.0"},
+      {:poison, "~> 2.2", override: true},
       {:cowboy, "~> 1.0"}
     ]
   end
