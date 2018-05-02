@@ -17,6 +17,11 @@ config :messenger, MessengerWeb.Endpoint,
   pubsub: [name: Messenger.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Configure facebook_messenger
+config :facebook_messenger,
+  facebook_page_token: "EAAPJ6djjwkMBAE0hnMYCiGqC5QKN9LXvsrZCSOj6thqoisdAWfY66PlbldBRwE5lt4jAM3ASScrxjIwc4Oo0PTvRbTWZAcNzJLAZAQYVyCyydjB1vDjWRTBeepWoZA5ZBa5uZAMR4uSfSx31ZBxejsOxTVLAegxCZBG9dhAj1JrXEgZDZD",
+  challenge_verify_token: "advocates_response"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

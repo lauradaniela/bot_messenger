@@ -1,5 +1,8 @@
 defmodule MessengerWeb.Router do
   use MessengerWeb, :router
+  use FacebookMessenger.Phoenix.Router
+
+  facebook_routes "/api/webhook", Messenger.ChatController
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +16,8 @@ defmodule MessengerWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MessengerWeb do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
+  scope "/api", MessengerWeb do
+    pipe_through :api
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MessengerWeb do
-  #   pipe_through :api
-  # end
 end

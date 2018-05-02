@@ -14,6 +14,7 @@ defmodule Messenger.Application do
       supervisor(MessengerWeb.Endpoint, []),
       # Start your own worker by calling: Messenger.Worker.start_link(arg1, arg2, arg3)
       # worker(Messenger.Worker, [arg1, arg2, arg3]),
+      worker(Messenger.FacebookMessenger.Builder, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

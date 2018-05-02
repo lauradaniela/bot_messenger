@@ -20,7 +20,7 @@ defmodule Messenger.Mixfile do
   def application do
     [
       mod: {Messenger.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :facebook_messenger, :phoenix_facebook_messenger]
     ]
   end
 
@@ -41,6 +41,7 @@ defmodule Messenger.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:httpotion, "~> 3.0.2"},
+
       {:facebook_messenger, "~> 0.4.0"},
       {:phoenix_facebook_messenger, "~> 0.4.0"},
       {:poison, "~> 2.2", override: true},
