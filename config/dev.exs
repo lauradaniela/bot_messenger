@@ -54,5 +54,5 @@ config :bot, Bot.Repo,
   username: "postgres",
   password: "postgres",
   database: "bot_dev",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10
