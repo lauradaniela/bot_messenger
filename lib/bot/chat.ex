@@ -20,7 +20,7 @@ defmodule Bot.Chat do
 
   defp access_token_params do
     %{
-      access_token: "EAAPJ6djjwkMBAI8G94X0CG6QVheIDx3KIZAQOhhKpxXzEzX3GjKYAeLfjsxV0o6VvGwlLcLyUP7oi0E52oauZBKfQ2tw1yLyVO2erjW6dVJZBetlJtZCEZBZCOBIMy4Mz5Nyl14buXy6uFCMFZBS0Nw4WRH8hguI0QOnZAJo2oO4swZDZD"
+      access_token: System.get_env("TOKEN_PAGE")
     }
     |> URI.encode_query()
   end
