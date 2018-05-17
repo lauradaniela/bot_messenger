@@ -9,10 +9,6 @@ defmodule BotWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   pipeline :bot do
     plug :accepts, ["json"]
   end
@@ -30,6 +26,10 @@ defmodule BotWeb.Router do
     post "/webhook", BotController, :message
   end
 
-  ##scope "/api/v1", BotWeb do
-  ##end
+  scope "/api", BotWeb do
+    pipe_through :bot
+
+    resources "/users", UserController
+    resources "/messages", MessageController
+  end
 end
