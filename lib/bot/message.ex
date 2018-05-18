@@ -1,15 +1,47 @@
 defmodule Bot.Message do
   use BotWeb, :controller
 
-  def type_message do
+  def type_message(message) do
+    if String.match?(message, ~r/contraseña|password/) do
+      IO.puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      message_password()
+    end
   end
 
-  def message_initial(client_number) do
-    data = %{
-      recipient: %{
-        phone_number: client_number
-      },
-      message: "Este es tu primer contacto"
+  def message_initial() do
+    %{
+      attachment: %{
+        type: "template",
+        payload: %{
+          template_type: "button",
+          text: "Bienvenido a Advocates, te invitamos a dirigirte a nuestra página",
+          buttons: [
+            %{
+              type: "web_url",
+              url: "https://fluvip.advocatespro.com/users/sign_in?locale=es",
+              title: "Visita Advocates"
+            }
+          ]
+        }
+      }
+    }
+  end
+  def message_password() do
+    %{
+      attachment: %{
+        type: "template",
+        payload: %{
+          template_type: "button",
+          text: "Si has olvidado tu contraseña visita nuestra pagina y selecciona la opción ¿olvido su contraseña?",
+          buttons: [
+            %{
+              type: "web_url",
+              url: "https://fluvip.advocatespro.com/users/sign_in?locale=es",
+              title: "Visita Advocates"
+            }
+          ]
+        }
+      }
     }
   end
 end

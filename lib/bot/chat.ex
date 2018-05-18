@@ -3,34 +3,40 @@ defmodule Bot.Chat do
 
   alias Bot.Clients
   alias Bot.Clients.User
+  alias Bot.Message
 
   def respond_to_message(message, sender_id) do
     case save_user(sender_id) do
       {:ok, user} ->
         data = %{
           recipient: %{
-            phone_number: "+573125657610"
+            id: sender_id
           },
-          message: message_normal([])
+          message: Message.type_message(message)
         }
         |> Poison.encode!
-      
-        facebook_request_url("messages", access_token_params())
-        |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
+
+        send_message(data)
     end
+  end
+
+  def send_message(data) do
+    IO.puts("++++++++++++++++++++++++++++++++++++++++++++++++++")
+
+    facebook_request_url("messages", access_token_params())
+    |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
   end
 
   def message_initial() do
     data = %{
       recipient: %{
-        phone_number: "+573125657610"
+        phone_number: ""
       },
-      message: message_response([])
+      message: Message.message_initial()
     }
     |> Poison.encode!
-    
-    facebook_request_url("messages", access_token_params())
-    |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
+
+    send_message(data)
   end
 
   defp facebook_request_url(path, params) do
@@ -42,44 +48,6 @@ defmodule Bot.Chat do
       access_token: System.get_env("TOKEN_PAGE")
     }
     |> URI.encode_query()
-  end
-
-  defp message_normal([]) do
-    %{
-      attachment: %{
-        type: "template",
-        payload: %{
-          template_type: "button",
-          text: "Bienvenido a Advocates, te invitamos a dirigirte a nuestra pagina",
-          buttons: [
-            %{
-              type: "web_url",
-              url: "https://fluvip.advocatespro.com/users/sign_in?locale=es",
-              title: "Visita Advocates"
-            }
-          ]
-        }
-      }
-    }
-  end
-
-  defp message_response([]) do
-    %{
-      attachment: %{
-        type: "template",
-        payload: %{
-          template_type: "button",
-          text: "Bienvenida Laura",
-          buttons: [
-            %{
-              type: "web_url",
-              url: "https://fluvip.advocatespro.com/users/sign_in?locale=es",
-              title: "Visita Advocates"
-            }
-          ]
-        }
-      }
-    }
   end
 
   defp save_user(sender_id) do
