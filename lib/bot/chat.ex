@@ -21,8 +21,6 @@ defmodule Bot.Chat do
   end
 
   def send_message(data) do
-    IO.puts("++++++++++++++++++++++++++++++++++++++++++++++++++")
-
     facebook_request_url("messages", access_token_params())
     |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
   end
