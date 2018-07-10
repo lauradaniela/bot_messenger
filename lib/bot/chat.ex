@@ -26,6 +26,7 @@ defmodule Bot.Chat do
   end
 
   def message_initial(telefono) do
+    IO.puts("lalallllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     data = %{
       recipient: %{
         phone_number: telefono
