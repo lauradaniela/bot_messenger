@@ -21,7 +21,7 @@ defmodule Bot.Message do
     }
   end
 
-  def message_initial() do
+  def first_message() do
     %{
       attachment: %{
         type: "template",

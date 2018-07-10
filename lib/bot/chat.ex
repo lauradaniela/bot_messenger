@@ -25,16 +25,17 @@ defmodule Bot.Chat do
     |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
   end
 
-  def message_initial() do
+  def message_initial(telefono) do
     data = %{
       recipient: %{
-        phone_number: ""
+        phone_number: telefono
       },
-      message: Message.message_initial()
+      message: Message.first_message()
     }
     |> Poison.encode!
 
-    send_message(data)
+    facebook_request_url("messages", access_token_params())
+    |> HTTPoison.post(data, ["Content-Type": "application/json"], stream_to: self())
   end
 
   defp facebook_request_url(path, params) do

@@ -20,9 +20,4 @@ defmodule BotWeb.BotController do
     |> send_resp(200, "ok")
   end
 
-  def message(conn, _params) do
-    Bot.Chat.message_initial()
-    conn
-    |> send_resp(200, "ok")
-  end
 end
