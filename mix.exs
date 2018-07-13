@@ -20,7 +20,7 @@ defmodule Bot.Mixfile do
   def application do
     [
       mod: {Bot.Application, []},
-      extra_applications: [:logger, :runtime_tools],
+      extra_applications: [:logger, :runtime_tools, :amqp],
     ]
   end
 
@@ -41,6 +41,14 @@ defmodule Bot.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:httpoison, "~> 0.13.0"},
+      {:ranch, "~> 1.4"},
+      {:jsx, "~> 2.8.2"},
+      {:goldrush, "~> 0.1.9"},
+      {:lager, "~> 3.6"},
+      {:recon, "~> 2.3"},
+      {:ranch_proxy_protocol, "~> 1.5"},
+      {:rabbit_common, "~> 3.6"},
+      {:amqp, "~> 1.0.3"},
       {:cowboy, "~> 1.0"}
     ]
   end
