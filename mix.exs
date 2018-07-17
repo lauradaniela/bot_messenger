@@ -42,6 +42,7 @@ defmodule Bot.Mixfile do
       {:gettext, "~> 0.11"},
       {:httpoison, "~> 0.13.0"},
       {:ranch, "~> 1.4"},
+      {:poison, "~> 3.1"},
       {:jsx, "~> 2.8.2"},
       {:goldrush, "~> 0.1.9"},
       {:lager, "~> 3.6"},

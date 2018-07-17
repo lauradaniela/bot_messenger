@@ -15,5 +15,5 @@ config :bot, Bot.Repo,
   username: "postgres",
   password: "postgres",
   database: "bot_test",
-  hostname: "localhost",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox
