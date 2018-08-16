@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :bot, Bot.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: ENV["POSTGRES_USER"],
+  password: ENV["POSTGRES_PASSWORD"],
   database: "bot_dev",
   hostname: "db",
   pool_size: 10
