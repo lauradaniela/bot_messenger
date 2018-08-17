@@ -56,3 +56,9 @@ config :bot, Bot.Repo,
   database: "bot_dev",
   hostname: "db",
   pool_size: 10
+
+config :bot, :rabbitmq,
+  host: "localhost",
+  port: 5673,
+  username: "postgres",
+  password: "postgres"

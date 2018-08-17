@@ -49,6 +49,7 @@ defmodule Bot.Mixfile do
       {:recon, "~> 2.3"},
       {:ranch_proxy_protocol, "~> 1.5"},
       {:rabbit_common, "~> 3.6"},
+      {:amqp_client, "~> 3.7"},
       {:amqp, "~> 1.0.3"},
       {:cowboy, "~> 1.0"}
     ]
